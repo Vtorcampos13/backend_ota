@@ -1,16 +1,16 @@
 import jwt from "jsonwebtoken";
 
-const loginApi = (req,res) => {
+/* const loginApi = (req,res) => {
     const {username,password} = req.query;
     const token = jwt.sign({user:username},process.env.JSON_SECRET,
     {expiresIn:"10min"});
     req.json({token});
-}
+} */
 
 const login = (req,res) => {
-    const {username,password} = req.body;
+    const {matricula,password} = req.body;
     //... comprobar que usuario existe y contraseña correcta
-    req.session.user = username;
+    req.session.user = matricula;
     res.redirect("/");
 }
 
