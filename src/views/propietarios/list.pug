@@ -1,0 +1,10 @@
+extends ../layout
+
+block content 
+    h1.propietarios-list-title Lista de propietarios
+    if error 
+        h2 No se han podido encontrar los datos
+    else if propietarios
+        ul 
+            each propietario in propietarios
+                li.propietario-list-item= propietario.nombre +', '+ propietario.apellido +', '+ propietario.email

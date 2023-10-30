@@ -1,0 +1,10 @@
+extends ../layout
+
+block content 
+    h1.operarios-list-title Lista de operarios
+    if error 
+        h2 No se han podido encontrar los datos
+    else if operarios
+        ul 
+            each operario in operarios
+                li.operario-list-item= operario.nombre +', '+ operario.apellido 

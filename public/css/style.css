@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600&display=swap');
+
+body{
+    background-color: #e0e2e1;
+    font-family: 'Montserrat',sans-serif;
+}
+nav {
+    background-color: #D1031D;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-home{
+    text-align: center;
+}
+
+.login-title{
+    text-align: center;
+}
+
+a{
+    padding: 5px;
+    text-decoration: none;
+    color: rgb(232, 230, 230);
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-class{
+    width: 70%;
+    margin: auto;
+    border-radius: 10px;
+    font-size: 18px;
+
+}
+
+.button-class{
+    width: 35%;
+    margin: auto;
+    margin-top: 20px;
+    font-family: 'Montserrat',sans-serif;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.button-class:hover{
+    background-color: #D1031D;
+    cursor: pointer;
+    color: rgb(232, 230, 230);
+
+}
+
+.label-class{
+    text-align: center;
+    padding: 10px;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgb(232, 230, 230);
+}
+
+.operarios-list-title, .propietarios-list-title{
+    text-align: center;
+}
+
+.operario-list-item{
+    text-decoration: none;
+}
+
+.propietario-list-item{
+    text-decoration: none;
+}
+
+.div-ul{
+    border-radius: 10px;
+    background-color: #D1031D;
+    width: 60%;
+    margin: auto;
+}
+
+.img-title{
+    margin-top: 20px;
+}
