@@ -2,7 +2,7 @@ import cochesModel from "../../models/cochesModel.js";
 
 const getAll = async() => {
     try{
-        const coches = await cochesModelsModel.findAll();
+        const coches = await cochesModel.findAll();
         return [null, coches];
     }catch(e){
         return [e.message,null];

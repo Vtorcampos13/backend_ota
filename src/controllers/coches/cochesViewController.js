@@ -7,9 +7,9 @@ import cochesController from "./cochesController.js";
 
 const getById = async (req,res) =>{
     const id = req.params.id;
-    const [error,aceituna] = await aceitunasController.getById(id);
-    //res.render("aceitunas/show",{error,aceituna});   
-    res.json(aceituna);
+    const [error,coche] = await cochesController.getById(id);
+    //res.render("coches/show",{error,coche});   
+    res.json(coche);
 }
 
 const createForm = (req,res)=>{
@@ -40,13 +40,13 @@ const updateForm = async(req,res) =>{
 const update = (req,res) =>{
     const id = req.params.id;
     console.log("params id",id)
-    const {tipo, peso} = req.body;
-    const [error,aceituna] = aceitunasController.update(id,tipo,peso);
+    const {marca, modelo, matricula, password} = req.body;
+    const [error,coche] = cochesController.update(marca, modelo, matricula, password);
     if(error){
         const uriError = encodeURIComponent(error);
-        return res.redirect(`/aceitunas/${id}/edit?error=${uriError}`)
+        return res.redirect(`/coches/${id_coche}/edit?error=${uriError}`)
     }
-    res.redirect(`/aceitunas/${id}`);
+    res.redirect(`/coches/${id_coche}`);
 };
 
 const remove = (req,res)=>{

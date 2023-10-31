@@ -12,8 +12,9 @@ const findAll= async ()=>{
 const findByPk = async (pk) =>{
     const queryString = "SELECT * FROM coches WHERE id_coche=?;";
     const [rows,fields] = await connection.query(queryString,[pk]);
-    console.log(rows);
-    console.log(fields);
+    /* console.log(rows);
+    console.log(fields); */
+    console.log(pk);
     return rows[0];
 }
 
