@@ -16,3 +16,7 @@ VALUES
 INSERT INTO multas (importe_multa,fecha_multa, id_parking, activa)
 VALUES
 ('20', '2020-01-01 10:00:00', 1, 0), ('20', '2020-01-01 10:00:00', 2, 1);
+
+INSERT INTO admin (user, password)
+VALUES 
+('admin',1234);
