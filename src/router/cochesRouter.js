@@ -10,7 +10,8 @@ router.get("/",isAuthenticated,(req,res)=>{
     cochesViewController.getAll(req,res);
 });
 
-router.get("/:id",(req,res)=>{
+
+router.get("/:id",isAuthenticated,(req,res)=>{
     cochesViewController.getById(req,res);
 });
 
