@@ -1,4 +1,6 @@
-import cochesModel from "../../models/cochesModel.js";
+
+import zonaModel from "../../models/zonaModel.js";
+import zonaModelModel from "../../models/zonaModel.js";
 import {Op} from "sequelize";
 
 
@@ -6,11 +8,11 @@ const getAll = async(q=null) => {
     const options = {};
 
     if(q) {
-        options.where = { marca:{ [Op.like]: `%${q}%` },}
+        options.where = { nombre_zona:{ [Op.like]: `%${q}%` },}
     }
     try{
-        const coches = await cochesModel.findAll(options);
-        return [null, coches];
+        const zona = await zonaModel.findAll(options);
+        return [null, zona];
     }catch(e){
         return [e.message,null];
     }
@@ -18,45 +20,43 @@ const getAll = async(q=null) => {
 
 const getById = async (id) => {
     try {
-        const coche = await cochesModel.findByPk(id);
-        return [null, coche];
+        const zona = await zonaModel.findByPk(id);
+        return [null, zona];
     }
     catch (e) {
         return [e.message, null];
     }
 }
-const create = async (marca, modelo, matricula, password) => {
-    if (marca === undefined || modelo === undefined || matricula === undefined || password === undefined) {
-        const error = "marca, modelo, matricula y password deben ser definidos";
+const create = async (nombre_zona,tarifa_hora) => {
+    if (nombre_zona === undefined || tarifa_hora === undefined) {
+        const error = "nombre_zona y tarifa_hora deben ser definidos";
         return [error, null];
     }
     try{
-        const coche = await cochesModel.create({marca,modelo,matricula,password});
-        return [null,coche];
+        const zona = await zonaModel.create({nombre_zona,tarifa_hora});
+        return [null,zona];
     }
     catch(e){
         return [e.message, null];
     }
 }
 
-const update = async(id_coche,marca, modelo, matricula, password) => {
+const update = async(id_zona,nombre_zona,tarifa_hora) => {
     
     if(id == undefined){
         const error = "Tienes que especificar un ID válido";
         return [error,null];
     }
-    if (marca === undefined || modelo === undefined || matricula === undefined || password === undefined) {
+    if (nombre_zona === undefined || tarifa_hora === undefined) {
         const error = "marca, modelo, matricula y password deben ser definidos";
         return [error, null];
     }
     try {
         console.log("id",id);
-        const coche= await cochesModel.findByPk(id);
-        coche.marca = marca;
-        coche.modelo = modelo;
-        coche.matricula = matricula;
-        coche.password = password;
-        return [null,coche];
+        const coche= await zonaModel.findByPk(id);
+        zona.nombre_zona = nombre_zona;
+        zona.tarifa_hora = tarifa_hora;
+        return [null,zona];
     }
     catch (e) {
         console.log(e)
@@ -66,12 +66,12 @@ const update = async(id_coche,marca, modelo, matricula, password) => {
 
 const remove = async (id) => {
     try {
-        const coche = await cochesModel.findByPk(id);
+        const zona = await zonaModel.findByPk(id);
         if(!coche){
             const error = "No se ha encontrado ningún elemento con ese ID";
             return[error,null];
         }
-        return [null,coche];
+        return [null,zona];
     }
     catch (e) {
         return [e.message,null];
@@ -95,3 +95,4 @@ export default {
     update,
     remove
 };
+

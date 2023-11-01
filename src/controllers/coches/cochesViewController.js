@@ -1,7 +1,9 @@
 import cochesController from "./cochesController.js";
 
  const getAll = async (req,res) =>{
-    const [error, coches] = await cochesController.getAll();
+    const errorMessage = req.query.error;
+    const q = req.query.q;
+    const [error, coches] = await cochesController.getAll(q);
     res.render("coches/list",{error,coches});
 }
 
