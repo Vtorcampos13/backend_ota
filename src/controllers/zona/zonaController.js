@@ -29,7 +29,7 @@ const getById = async (id) => {
 }
 const create = async (nombre_zona,tarifa_hora) => {
     if (nombre_zona === undefined || tarifa_hora === undefined) {
-        const error = "nombre_zona y tarifa_hora deben ser definidos";
+        const error = "nombre de zona y tarifa hora deben ser definidos";
         return [error, null];
     }
     try{
@@ -48,7 +48,7 @@ const update = async(id_zona,nombre_zona,tarifa_hora) => {
         return [error,null];
     }
     if (nombre_zona === undefined || tarifa_hora === undefined) {
-        const error = "marca, modelo, matricula y password deben ser definidos";
+        const error = "nombre de zona y tarifa deben ser definidos";
         return [error, null];
     }
     try {

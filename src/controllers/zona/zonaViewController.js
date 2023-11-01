@@ -39,12 +39,12 @@ const updateForm = (req,res) =>{
 const update = (req,res) =>{
     const id = req.params.id;
     const {nombre_zona,tarifa_hora} = req.body;
-    const [error,zona] = zonaController.update(id,nombre_zona,tarifa_hora);
+    const [error,zona] = zonaController.update(nombre_zona,tarifa_hora);
     if(error){
         const uriError = encodeURIComponent(error);
-        return res.redirect(`/zona/${id}/edit?error=${uriError}`)
+        return res.redirect(`/zona/${id_zona}/edit?error=${uriError}`)
     }
-    res.redirect(`/zona/${id}`);
+    res.redirect(`/zona/${id_zona}`);
 };
 
 const remove = (req,res)=>{
