@@ -10,8 +10,7 @@ import cochesController from "./cochesController.js";
 const getById = async (req,res) =>{
     const id = req.params.id;
     const [error,coche] = await cochesController.getById(id);
-    //res.render("coches/show",{error,coche});   
-    res.json(coche);
+    res.render("coches/show",{error,coche,session:req.session});
 }
 
 const createForm = (req,res)=>{
@@ -54,6 +53,10 @@ const update = (req,res) =>{
 const remove = (req,res)=>{
     const id = req.params.id;
     const [error,coche] = cochesController.remove(id);
+    if(error){
+        const uriError = encodeURIComponent(error);
+        return res.redirect(`/coches?error=${uriError}`)
+    }
     res.redirect("/coches");
 }
 
