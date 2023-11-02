@@ -66,15 +66,19 @@ a:hover{
     color: rgb(232, 230, 230);
 }
 
-.operarios-list-title, .zona-list-title{
+.coche-list-title, .zona-list-title, .parking-list-title{
     text-align: center;
 }
 
-.operario-list-item{
+.coche-list-item{
     text-decoration: none;
 }
 
 .zona-list-item{
+    text-decoration: none;
+}
+
+.parking-list-item{
     text-decoration: none;
 }
 

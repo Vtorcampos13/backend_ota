@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 
 import sequelize from "../config/sequelize.js";
 
-const parkingModel = sequelize.define("zona",
+const parkingModel = sequelize.define("parking",
 {
     id_parking:{
         type: DataTypes.INTEGER,
