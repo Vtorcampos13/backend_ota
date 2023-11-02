@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `otabilbao`.`coches` (
   `marca` VARCHAR(45) NULL,
   `modelo` VARCHAR(45) NULL,
   `matricula` VARCHAR(10) NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id_coche`),
   UNIQUE INDEX `id_coche_UNIQUE` (`id_coche` ASC) VISIBLE,
   UNIQUE INDEX `matricula_UNIQUE` (`matricula` ASC) VISIBLE)
