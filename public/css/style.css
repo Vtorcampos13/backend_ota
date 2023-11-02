@@ -66,7 +66,7 @@ a:hover{
     color: rgb(232, 230, 230);
 }
 
-.operarios-list-title, .propietarios-list-title{
+.operarios-list-title, .zona-list-title{
     text-align: center;
 }
 
@@ -74,7 +74,7 @@ a:hover{
     text-decoration: none;
 }
 
-.propietario-list-item{
+.zona-list-item{
     text-decoration: none;
 }
 

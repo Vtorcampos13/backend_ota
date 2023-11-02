@@ -20,12 +20,6 @@ router.post("/",(req,res)=>{
     zonaViewController.create(req,res);
 });
 
-router.get("/:id/edit",zonaViewController.updateForm);
-
-router.post("/:id",(req,res)=>{
-    zonaViewController.update(req,res);
-});
-
 router.get("/:id/delete",(req,res)=>{
     zonaViewController.remove(req,res);
 });
