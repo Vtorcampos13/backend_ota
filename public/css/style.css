@@ -66,7 +66,7 @@ a:hover{
     color: rgb(232, 230, 230);
 }
 
-.coche-list-title, .zona-list-title, .parking-list-title{
+.coche-list-title, .zona-list-title, .parking-list-title, .multas-list-title{
     text-align: center;
 }
 
@@ -79,6 +79,10 @@ a:hover{
 }
 
 .parking-list-item{
+    text-decoration: none;
+}
+
+.multas-list-item{
     text-decoration: none;
 }
 

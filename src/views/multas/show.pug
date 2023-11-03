@@ -1,0 +1,13 @@
+extends ../layout
+
+block content 
+    if error 
+        p(class="error", style="color:red;")= error
+    if multa 
+        article 
+            h1="Importe multa: "+multa.importe_multa
+            p="Fecha multa: "+multa.fecha_multa
+            button 
+                a(href='/multas/'+multa.id_multa+'/edit') Editar
+            button
+                a(href='/multas/'+multa.id_multa+'/delete') Eliminar
