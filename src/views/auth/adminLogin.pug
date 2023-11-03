@@ -1,13 +1,13 @@
 extends ../layout
 
 block content
-    h1.login-title Iniciar Sesión
+    h1.login-title Admin Iniciar Sesión 
     if error 
         p(class="error")= error
     div.div-ul
-        form.login-form(action="/login", method="post")
-            label.label-class(for="matricula") Matricula
-            input.input-class(type="text", name="matricula", id="matricula")
+        form.login-form(action="/admin/login", method="post")
+            label.label-class(for="user") Usuario
+            input.input-class(type="text", name="user", id="user")
             label.label-class(for="password") Contraseña
             input.input-class(type="password", name="password", id="password")
             input.button-class(type="submit", value="Iniciar sesion")
