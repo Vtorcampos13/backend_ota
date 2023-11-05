@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import parkingViewController from "../controllers/parking/parkingViewController.js";
-import isAuthenticated from "../middlewares/authMiddleware.js";
+import {isAuthenticated,isAdmin} from "../middlewares/authMiddleware.js";
 
 
 const router = Router();
