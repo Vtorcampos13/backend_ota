@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import cochesModel from "../../models/cochesModel.js";
+import adminModel from "../../models/adminModel.js";
 
 
 const login = async(req,res) => {
@@ -19,14 +20,41 @@ const login = async(req,res) => {
     }
     catch(e){
         const errorUri = encodeURIComponent("credenciales incorrectas");
-        return res.redirect("/login?error=" + errorUri);
+        return res.redirect("/login?error="+errorUri);
+    }
+    
+    res.redirect("/");
+}
+
+const adminLogin = async(req,res) => {
+    const {user,password} = req.body;
+    try{
+        const exist = await adminModel.findOne({where:{user:user}})
+        if(!exist){
+            throw new Error("credenciales incorrectas");
+        }
+        const hash = exist.password;
+
+        if(await bcrypt.compare(password,hash)){
+            req.session.user = exist.user;
+        }    
+    }
+    catch(e){
+        const errorUri = encodeURIComponent("credenciales incorrectas");
+        return res.redirect("/admin/login?error="+errorUri);
     }
     
     res.redirect("/");
 }
 
 const loginForm = (req,res) => {
-    res.render("auth/login");
+    const errorMessage = req.query.error
+    res.render("auth/login",{error:errorMessage});
+}
+
+const adminLoginForm = (req,res) => {
+    const errorMessage = req.query.error
+    res.render("auth/adminLogin",{error:errorMessage});
 }
 
 const register = async(req,res) => {
@@ -87,5 +115,7 @@ export default{
     logout,
     register,
     registerForm,
+    adminLogin,
+    adminLoginForm,
 }
 
