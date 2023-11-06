@@ -9,8 +9,9 @@ const adminModel = sequelize.define("admin",
         allowNull:false,
         primaryKey:true
     },
-    password : {
+    password: {
         type: DataTypes.STRING,
+        allowNull:false
     }
 })
 
