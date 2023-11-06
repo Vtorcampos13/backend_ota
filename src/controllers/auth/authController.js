@@ -21,7 +21,7 @@ const login = async(req,res) => {
         const errorUri = encodeURIComponent("credenciales incorrectas");
         return res.redirect("/login?error=" + errorUri);
     }
-    
+     
     res.redirect("/");
 }
 
