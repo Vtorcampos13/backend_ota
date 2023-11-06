@@ -2,6 +2,8 @@ extends ../layout
 
 block content
     h1.login-title Iniciar Sesión
+    if error 
+        p(class="error")= error
     div.div-ul
         form.login-form(action="/login", method="post")
             label.label-class(for="matricula") Matricula

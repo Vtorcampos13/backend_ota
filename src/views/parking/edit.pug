@@ -1,0 +1,18 @@
+extends ../layout
+
+block content 
+    h1 Editar parking 
+    if error 
+        h2= error
+    form(action=`/parking/${parkings.id}`, method="post")
+        label(for="fecha_inicio") Fecha Inicio 
+        input(type="datetime-local", name="fecha_inicio", id="fecha_inicio" value=parkings.fecha_inicio)  
+        label(for="fecha_fin") Fecha Fin
+        input(type="datetime-local", name="fecha_fin", id="fecha_fin", value=parkings.fecha_fin)
+        label(for="id_coche") Id coche
+        input(type="number", name="id_coche", id="id_coche", value=parkings.id_coche)
+        label(for="id_zona") Id zona
+        input(type="number", name="id_zona", id="id_zona", value=parkings.id_zona)
+        abel(for="activo") Activo
+        input(type="number", name="activo", id="activo", value=parkings.activo)  
+        input(type="submit", value="guardar")

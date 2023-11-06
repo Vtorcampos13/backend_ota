@@ -1,6 +1,6 @@
 
 import zonaModel from "../../models/zonaModel.js";
-import zonaModelModel from "../../models/zonaModel.js";
+
 import {Op} from "sequelize";
 
 
@@ -11,8 +11,8 @@ const getAll = async(q=null) => {
         options.where = { nombre_zona:{ [Op.like]: `%${q}%` },}
     }
     try{
-        const zona = await zonaModel.findAll(options);
-        return [null, zona];
+        const zonas = await zonaModel.findAll(options);
+        return [null, zonas];
     }catch(e){
         return [e.message,null];
     }
@@ -53,10 +53,10 @@ const update = async(id_zona,nombre_zona,tarifa_hora) => {
     }
     try {
         console.log("id",id);
-        const coche= await zonaModel.findByPk(id);
-        zona.nombre_zona = nombre_zona;
-        zona.tarifa_hora = tarifa_hora;
-        return [null,zona];
+        const zonas = await zonaModel.findByPk(id);
+        zonas.nombre_zona = nombre_zona;
+        zonas.tarifa_hora = tarifa_hora;
+        return [null,zonas];
     }
     catch (e) {
         console.log(e)
@@ -66,12 +66,12 @@ const update = async(id_zona,nombre_zona,tarifa_hora) => {
 
 const remove = async (id) => {
     try {
-        const zona = await zonaModel.findByPk(id);
-        if(!coche){
+        const zonas = await zonaModel.findByPk(id);
+        if(!coches){
             const error = "No se ha encontrado ningún elemento con ese ID";
             return[error,null];
         }
-        return [null,zona];
+        return [null,zonas];
     }
     catch (e) {
         return [e.message,null];

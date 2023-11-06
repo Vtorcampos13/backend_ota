@@ -1,14 +1,16 @@
 import zonaController from "./zonaController.js";
 
-const getAll = (req,res) => {
-    const [error, zona] = zonaController.getAll();
+const getAll = async (req,res) => {
+    const errorMessage = req.query.error;
+    const q = req.query.q;
+    const [error, zona] = await zonaController.getAll(q);
     res.render("zona/list",{error,zona}); 
 }
 
-const getById = (req,res) => {
+const getById = async (req,res) => {
     const id = req.params.id;
-    const [error, zona] = zonaController.getById();
-    res.render("zona/list",{error,zona}); 
+    const [error, zonas] = await zonaController.getById(id);
+    res.json(zonas);
 }
 
 const createForm = (req,res)=>{
@@ -18,7 +20,7 @@ const createForm = (req,res)=>{
 
 const create = (req,res) =>{
     const {nombre_zona,tarifa_hora} = req.body;
-    const [error,zona] = zonaController.create(nombre_zona,tarifa_hora);
+    const [error,zonas] = zonaController.create(nombre_zona,tarifa_hora);
     if(error){
         const uriError = encodeURIComponent(error);
         return res.redirect(`/zona/new?error=${uriError}`)
@@ -29,17 +31,17 @@ const create = (req,res) =>{
 const updateForm = (req,res) =>{
     const errorMessage = req.query.error;
     const id = req.params.id;
-    const [error,zona] = zonaController.getById(id);
+    const [error,zonas] = zonaController.getById(id);
     if(error){
         res.redirect("/zona");
     }
-    res.render("zona/edit",{error:errorMessage,zona});
+    res.render("zona/edit",{error:errorMessage,zonas});
 }
 
 const update = (req,res) =>{
     const id = req.params.id;
     const {nombre_zona,tarifa_hora} = req.body;
-    const [error,zona] = zonaController.update(nombre_zona,tarifa_hora);
+    const [error,zonas] = zonaController.update(nombre_zona,tarifa_hora);
     if(error){
         const uriError = encodeURIComponent(error);
         return res.redirect(`/zona/${id_zona}/edit?error=${uriError}`)
@@ -49,7 +51,7 @@ const update = (req,res) =>{
 
 const remove = (req,res)=>{
     const id = req.params.id;
-    const [error,zona] = zonaController.remove(id);
+    const [error,zonas] = zonaController.remove(id);
     res.redirect("/zona");
 }
 

@@ -11,24 +11,33 @@ const parkingModel = sequelize.define("parking",
         autoIncrement:true,
         unique:true,
     },
-    fecha_inicio : {
-        type: DataTypes.DATETIME,
+    fecha_inicio:{
+        type: DataTypes.DATE,
     },
-    fecha_fin: {
-        type: DataTypes.DATETIME,
+    fecha_fin:{
+        type: DataTypes.DATE,
     },
-    id_coche: {
-        type: DataTypes.INTEGER,
-        allowNull:false,
+    activo: {
+        type: DataTypes.BOOLEAN,
+        defaultValue:1,
     },
     id_zona: {
         type: DataTypes.INTEGER,
-        allowNull:false,
+        allowNull: false,
+        references: {
+          model: 'zona', 
+          key: 'id_zona',
+        }
     },
-    activo: {
-        type: DataTypes.BIT,
-        defaultValue: 1,
-    }
+    id_coche: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'coches', 
+          key: 'id_coche',
+        }
+    },
 })
 
 export default parkingModel;
+

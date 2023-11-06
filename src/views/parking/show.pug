@@ -1,0 +1,16 @@
+extends ../layout
+
+block content 
+    if error 
+        p(class="error", style="color:red;")= error
+    if parkings 
+        article 
+            h1="Id parking: "+parkings.id_parking
+            p="Fecha Inicio: "+parkings.fecha_inicio
+            p="Fecha Fin: "+parkings.fecha_fin
+            p="Id coche: "+parkings.id_coche
+            p="Id zona: "+parkings.id_zona
+            button 
+                a(href='/parking/'+parkings.id_coche+'/edit') Editar
+            button
+                a(href='/parking/'+parkings.id_coche+'/delete') Eliminar

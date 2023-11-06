@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    if error 
+        p(class="error", style="color:red;")= error 
+    form(action="/multas", method="post")
+        label(for="importe_multa") Importe Multa
+        input(type="text", name=importe_multa", id="importe_multa)
+        label(for="fecha_multa") Fecha Multa
+        input(type="datetime-local", name="fecha_multa", id="fecha_multa")
+        label(for="id_parking") Id parking
+        input(type="number", name="id_parking", id="id_parking")
+        label(for="activa") Activa
+        input(type="number", name="activa", id="activa")
+        input(type="submit", value="Crear")

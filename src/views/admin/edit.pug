@@ -5,12 +5,12 @@ block content
     if error 
         h2= error
     form(action=`/coches/${coche.id}`, method="post")
-        label(for="marca") Marca 
+        label(for="nombre") Marca 
         input(type="text", name="marca", id="marca" value=coche.marca)  
-        label(for="modelo") Modelo
+        label(for="apellido") Modelo
         input(type="text", name="modelo", id="modelo", value=coche.modelo)
-        label(for="matricula") Matricula
+        label(for="apellido") Matricula
         input(type="text", name="matricula", id="matricula", value=coche.matricula)
-        label(for="password") Password
+        label(for="apellido") Password
         input(type="text", name="password", id="password", value=coche.password) 
         input(type="submit", value="guardar")

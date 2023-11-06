@@ -9,8 +9,8 @@ import parkingController from "./parkingController.js";
 
 const getById = async (req,res) =>{
     const id = req.params.id;
-    const [error,parking] = await parkingController.getById(id);
-    res.render("parking/show",{error,parking,session:req.session});
+    const [error,parkings] = await parkingController.getById(id);
+    res.render("parking/show",{error,parkings,session:req.session});
 }
 
 const createForm = (req,res)=>{
@@ -19,45 +19,44 @@ const createForm = (req,res)=>{
 }
 
 const create = (req,res) =>{
-    const {marca,modelo,matricula,password} = req.body;
-    const [error,coche] = cochesController.create(marca,modelo,matricula,password);
+    const {fecha_inicio,fecha_fin,activo,id_coche,id_zona} = req.body;
+    const [error,parkings] = parkingController.create(fecha_inicio,fecha_fin,activo,id_coche,id_zona);
     if(error){
         const uriError = encodeURIComponent(error);
-        return res.redirect(`/coches/new?error=${uriError}`)
+        return res.redirect(`/parking/new?error=${uriError}`)
     }
-    res.redirect("/coches");
+    res.redirect("/parking");
 }
 
 const updateForm = async(req,res) =>{
     const errorMessage = req.query.error;
     const id = req.params.id;
-    const [error,coche] = await cochesController.getById(id);
+    const [error,parkings] = await parkingController.getById(id);
     if(error){
-        res.redirect("/coches");
+        res.redirect("/parking");
     }
-    res.render("coches/edit",{error:errorMessage,coche});
+    res.render("parking/edit",{error:errorMessage,parkings});
 }
 
 const update = (req,res) =>{
     const id = req.params.id;
-    console.log("params id",id)
-    const {marca, modelo, matricula, password} = req.body;
-    const [error,coche] = cochesController.update(marca, modelo, matricula, password);
+    const {fecha_inicio,fecha_fin,activo,id_coche,id_zona} = req.body;
+    const [error,parkings] = parkingController.update(fecha_inicio,fecha_fin,activo,id_coche,id_zona);
     if(error){
         const uriError = encodeURIComponent(error);
-        return res.redirect(`/coches/${id_coche}/edit?error=${uriError}`)
+        return res.redirect(`/parking/${id_parking}/edit?error=${uriError}`)
     }
-    res.redirect(`/coches/${id_coche}`);
+    res.redirect(`/parking/${id_parking}`);
 };
 
 const remove = (req,res)=>{
     const id = req.params.id;
-    const [error,coche] = cochesController.remove(id);
+    const [error,parkings] = parkingController.remove(id);
     if(error){
         const uriError = encodeURIComponent(error);
-        return res.redirect(`/coches?error=${uriError}`)
+        return res.redirect(`/parking?error=${uriError}`)
     }
-    res.redirect("/coches");
+    res.redirect("/parking");
 }
 
 export default{
