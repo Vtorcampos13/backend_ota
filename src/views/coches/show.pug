@@ -7,6 +7,9 @@ block content
         article 
             h1="marca: "+coche.marca
             p="modelo: "+coche.modelo
+            p="matricula: "+coche.matricula
+            button 
+                a(href='/parking/new')
             button 
                 a(href='/coches/'+coche.id_coche+'/edit') Editar
             button

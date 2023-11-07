@@ -15,12 +15,12 @@ const getById = async (req,res) =>{
 
 const createForm = (req,res)=>{
     const error = req.query.error;
-    res.render("parking/new",{error});
+    res.render("parking/new",{error:error});
 }
 
-const create = (req,res) =>{
+const create = async (req,res) =>{
     const {fecha_inicio,fecha_fin,activo,id_coche,id_zona} = req.body;
-    const [error,parkings] = parkingController.create(fecha_inicio,fecha_fin,activo,id_coche,id_zona);
+    const [error,parkings] = await parkingController.create(fecha_inicio,fecha_fin,activo,id_coche,id_zona);
     if(error){
         const uriError = encodeURIComponent(error);
         return res.redirect(`/parking/new?error=${uriError}`)

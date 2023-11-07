@@ -10,11 +10,13 @@ router.get("/",isAuthenticated,(req,res)=>{
     parkingViewController.getAll(req,res);
 });
 
+router.get("/new",(req,res) => {
+    parkingViewController.createForm(req,res);   
+})
+
 router.get("/:id",(req,res)=>{
     parkingViewController.getById(req,res);
 });
-
-router.get("/new",parkingViewController.createForm);
 
 router.post("/",(req,res)=>{
     parkingViewController.create(req,res);
