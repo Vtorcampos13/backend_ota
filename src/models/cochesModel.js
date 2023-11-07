@@ -27,4 +27,6 @@ const cochesModel = sequelize.define("coches",
     }
 })
 
+
+
 export default cochesModel;

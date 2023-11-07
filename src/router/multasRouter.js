@@ -10,11 +10,11 @@ router.get("/",isAuthenticated,(req,res)=>{
     multasViewController.getAll(req,res);
 });
 
+router.get("/new",multasViewController.createForm);
+
 router.get("/:id",isAuthenticated,(req,res)=>{
     multasViewController.getById(req,res);
 });
-
-router.get("/new",multasViewController.createForm);
 
 router.post("/",(req,res)=>{
     multasViewController.create(req,res);
