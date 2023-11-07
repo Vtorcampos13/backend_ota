@@ -96,3 +96,23 @@ a:hover{
 .img-title{
     margin-top: 20px;
 }
+
+.register-link {
+    text-align: center;
+    margin-top: 10px; /* Ajusta el margen superior según tus preferencias */
+}
+
+.register-link p {
+    font-size: 18px;
+    color: #333; /* Color del texto del párrafo */
+}
+
+.register-link a {
+    text-decoration: none;
+    color: #007BFF; /* Color del enlace */
+    font-weight: bold; /* Puedes ajustar la fuente según tus preferencias */
+}
+
+.register-link a:hover {
+    color: #0056b3; /* Color del enlace al pasar el mouse por encima */
+}
