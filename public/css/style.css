@@ -140,26 +140,42 @@ a:hover{
     margin-bottom: 20px;
 }
 
+.button-class-home:hover{
+    background-color: #D1031D;
+    cursor: pointer;
+    color: rgb(232, 230, 230);
+}
+
+.image {
+    margin:auto;
+    width: 40%;
+    margin-top: 20px;
+}
+
 .img-title{
     margin-top: 20px;
 }
 
 .register-link {
     text-align: center;
-    margin-top: 10px; /* Ajusta el margen superior según tus preferencias */
+    margin-top: 10px; 
 }
 
 .register-link p {
     font-size: 18px;
-    color: #333; /* Color del texto del párrafo */
+    color: #333; 
 }
 
 .register-link a {
     text-decoration: none;
-    color: #007BFF; /* Color del enlace */
-    font-weight: bold; /* Puedes ajustar la fuente según tus preferencias */
+    color: #0f5096; 
+    font-weight: bold; 
 }
 
 .register-link a:hover {
-    color: #0056b3; /* Color del enlace al pasar el mouse por encima */
+    color: #1364bb; 
+}
+
+.register-link p {
+    font-weight: bolder;
 }
