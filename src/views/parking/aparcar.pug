@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h1 Aparcar Coche
+  if error
+    p.error= error
+  form(action="/aparcar", method="POST")
+    label(for="cocheId") Coche ID:
+    input(type="text", name="cocheId")
+    label(for="zonaId") Zona ID:
+    input(type="text", name="zonaId")
+    label(for="fechaInicio") Fecha de Inicio:
+    input(type="datetime-local", name="fechaInicio")
+    button(type="submit") Aparcar Coche

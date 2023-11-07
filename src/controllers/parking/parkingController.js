@@ -1,95 +1,67 @@
 import parkingModel from "../../models/parkingModel.js";
-import {Op} from "sequelize";
+import zonaModel from "../../models/zonaModel.js";
+import cochesModel from "../../models/cochesModel.js";
 
+// Función para aparcar un coche
+const aparcar = async (cocheId, zonaId, fechaInicio) => {
+  try {
+    // Recupera la información del coche y la zona
+    const coche = await cochesModel.findByPk(cocheId);
+    const zona = await zonaModel.findByPk(zonaId);
 
-const getAll = async(q=null) => {
-    const options = {};
+    if (!coche || !zona) {
+      return [null, "Coche o zona no encontrados"];
+    }
 
-    try{
-        const parking = await parkingModel.findAll(options);
-        return [null, parking];
-    }catch(e){
-        return [e.message,null];
-    }
-}
+    // Calcula el precio del estacionamiento en función de la tarifa de la zona y la hora de inicio
+    const horaInicio = new Date(fechaInicio);
+    const tarifa = zona.tarifa_hora;
+    const precio = tarifa * (horaInicio.getHours() - zona.horaInicio.getHours());
 
-const getById = async (id) => {
-    try {
-        const parkings = await parkingModel.findByPk(id);
-        return [null, parkings];
-    }
-    catch (e) {
-        return [e.message, null];
-    }
-}
-const create = async (fecha_inicio,fecha_fin,id_coche,id_zona,activo) => {
-    if (fecha_inicio === undefined || fecha_fin === undefined || id_coche === undefined || id_zona === undefined || activo === undefined) {
-        const error = "fecha_inicio, fecha_fin, id_zona, id_coche y activo deben ser definidos";
-        return [error, null];
-    }
-    try{
-        const parkings = await parkingModel.create({fecha_inicio,fecha_fin,id_coche,id_zona,activo});
-        return [null,parkings];
-    }
-    catch(e){
-        return [e.message, null];
-    }
-}
+    // Crea un nuevo registro de estacionamiento
+    const nuevoEstacionamiento = await parkingModel.create({
+      fecha_inicio: fechaInicio,
+      id_coche: cocheId,
+      id_zona: zonaId,
+      precio: precio,
+      activo: true,
+    });
 
-const update = async(id_parking,fecha_inicio,fecha_fin,id_coche,id_zona,activo) => {
-    
-    if(id == undefined){
-        const error = "Tienes que especificar un ID válido";
-        return [error,null];
-    }
-    if (fecha_inicio === undefined || fecha_fin === undefined || id_coche === undefined || id_zona === undefined || activo === undefined) {
-        const error = "fecha_inicio, fecha_fin, id_zona, id_coche y activo deben ser definidos";
-        return [error, null];
-    }
-    try {
-        console.log("id",id);
-        const parkings = await parkingModel.findByPk(id);
-        parkings.fecha_inicio = fecha_inicio;
-        parkings.fecha_fin = fecha_fin;
-        parkings.id_coche = id_coche;
-        parkings.id_zona = id_zona;
-        parkings.activo = activo;
-        return [null,parkings];
-    }
-    catch (e) {
-        console.log(e)
-        return [e.message,null];
-    }
+    return [nuevoEstacionamiento, null];
+  } catch (error) {
+    return [null, error.message];
+  }
 };
 
-const remove = async (id) => {
-    try {
-        const parkings = await parkingModel.findByPk(id);
-        if(!parkings){
-            const error = "No se ha encontrado ningún elemento con ese ID";
-            return[error,null];
-        }
-        return [null,parkings];
-    }
-    catch (e) {
-        return [e.message,null];
-    }
-}
+// Función para desaparcar un coche
+const desaparcar = async (estacionamientoId, fechaFin) => {
+  try {
+    // Busca el registro de estacionamiento por su ID
+    const estacionamiento = await parkingModel.findByPk(estacionamientoId);
 
-export {
-    getAll,
-    getById,
-    create,
-    update,
-    remove
+    if (!estacionamiento) {
+      return [null, "Registro de parking no encontrado"];
+    }
+
+    // Calcula el precio final en función de la hora de inicio y finalización
+    const horaInicio = new Date(estacionamiento.fecha_inicio);
+    const horaFin = new Date(fechaFin);
+    const tarifa = estacionamiento.zona.tarifa_hora;
+    const precio = tarifa * (horaFin.getHours() - horaInicio.getHours());
+
+    // Actualiza el registro de estacionamiento con la hora de finalización y el precio
+    estacionamiento.fecha_fin = fechaFin;
+    estacionamiento.precio = precio;
+    estacionamiento.activo = false;
+    await estacionamiento.save();
+
+    return [estacionamiento, null];
+  } catch (error) {
+    return [null, error.message];
+  }
 };
-
-
 
 export default {
-    getAll,
-    getById,
-    create,
-    update,
-    remove
+    aparcar,
+    desaparcar,
 };

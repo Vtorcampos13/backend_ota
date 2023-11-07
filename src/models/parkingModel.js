@@ -2,42 +2,28 @@ import { DataTypes } from "sequelize";
 
 import sequelize from "../config/sequelize.js";
 
-const parkingModel = sequelize.define("parking",
-{
-    id_parking:{
-        type: DataTypes.INTEGER,
-        allowNull:false,
-        primaryKey:true,
-        autoIncrement:true,
-        unique:true,
+const parkingModel = sequelize.define('Parking', {
+    fecha_inicio: {
+      type: DataTypes.DATE,
+      allowNull: false,
     },
-    fecha_inicio:{
-        type: DataTypes.DATE,
-    },
-    fecha_fin:{
-        type: DataTypes.DATE,
-    },
-    activo: {
-        type: DataTypes.BOOLEAN,
-        defaultValue:1,
-    },
-    id_zona: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'zona', 
-          key: 'id_zona',
-        }
+    fecha_fin: {
+      type: DataTypes.DATE,
+      allowNull: false,
     },
     id_coche: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'coches', 
-          key: 'id_coche',
-        }
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-})
+    id_zona: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    activo: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+  });
 
 export default parkingModel;
 
