@@ -10,12 +10,11 @@ router.get("/",isAuthenticated,(req,res)=>{
     cochesViewController.getAll(req,res);
 });
 
+router.get("/new",cochesViewController.createForm);
 
 router.get("/:id",isAuthenticated,(req,res)=>{
     cochesViewController.getById(req,res);
 });
-
-router.get("/new",cochesViewController.createForm);
 
 router.post("/",(req,res)=>{
     cochesViewController.create(req,res);
