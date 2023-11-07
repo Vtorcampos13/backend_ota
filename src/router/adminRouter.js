@@ -9,7 +9,11 @@ import authController from "../controllers/auth/authController.js"
 const router = Router();
 
 router.get("/",isAdmin,(req,res)=>{
-    adminViewController.getAll(req,res);
+    adminViewController.adminGetAll(req,res);
+});
+
+router.get("/list",isAdmin,(req,res)=>{
+    adminViewController.adminGetAll(req,res);
 });
 
 router.get("/login",(req,res)=>{
