@@ -144,21 +144,22 @@ a:hover{
     margin-top: 20px;
 }
 
-.image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.register-link {
+    text-align: center;
+    margin-top: 10px; /* Ajusta el margen superior según tus preferencias */
 }
 
-@media only screen and (min-width: 768px) {
-    body, nav {
-      max-width: 64.063em;
-      margin: 0 auto;
-    }
-    .image {
-        width: 40%;
-        margin: auto;
-        margin-top: 20px;
-    }
+.register-link p {
+    font-size: 18px;
+    color: #333; /* Color del texto del párrafo */
+}
+
+.register-link a {
+    text-decoration: none;
+    color: #007BFF; /* Color del enlace */
+    font-weight: bold; /* Puedes ajustar la fuente según tus preferencias */
+}
+
+.register-link a:hover {
+    color: #0056b3; /* Color del enlace al pasar el mouse por encima */
 }

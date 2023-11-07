@@ -19,4 +19,4 @@ VALUES
 
 INSERT INTO admin (user, password)
 VALUES 
-('admin',1234);
+('admin','$2a$10$jHJZ6qA1HnQdi9ZgmPx7Be/TNNHBO6Mt4k9/XZx2p3q1tgnoFKmei');

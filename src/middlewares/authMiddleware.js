@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import adminModel from "../models/adminModel.js";
 
 
 const isAuthenticated = (req,res,next) => 
@@ -11,4 +12,17 @@ const isAuthenticated = (req,res,next) =>
     }
 }
 
-export default isAuthenticated;
+const isAdmin = async (req,res,next) =>{
+    if(req.session.user !== "admin"){
+            res.redirect("/login");
+    }
+    else{
+        next();
+    }
+}
+
+
+export  {
+    isAuthenticated,
+    isAdmin
+};

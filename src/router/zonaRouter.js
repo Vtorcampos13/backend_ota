@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import zonaViewController from "../controllers/zona/zonaViewController.js";
-import isAuthenticated from "../middlewares/authMiddleware.js";
+import {isAuthenticated,isAdmin} from "../middlewares/authMiddleware.js";
 
 
 const router = Router();
