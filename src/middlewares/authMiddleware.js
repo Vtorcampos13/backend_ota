@@ -14,7 +14,7 @@ const isAuthenticated = (req,res,next) =>
 
 const isAdmin = async (req,res,next) =>{
     if(req.session.user !== "admin"){
-            res.redirect("/login");
+            res.redirect("/admin/login");
     }
     else{
         next();

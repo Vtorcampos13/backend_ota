@@ -10,11 +10,11 @@ router.get("/",isAuthenticated,(req,res)=>{
     zonaViewController.getAll(req,res);
 });
 
+router.get("/new",zonaViewController.createForm);
+
 router.get("/:id",(req,res)=>{
     zonaViewController.getById(req,res);
 });
-
-router.get("/new",zonaViewController.createForm);
 
 router.post("/",(req,res)=>{
     zonaViewController.create(req,res);

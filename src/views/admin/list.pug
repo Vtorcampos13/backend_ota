@@ -6,5 +6,36 @@ block content
         h2 No se han podido encontrar los datos
     else if coches 
         ul 
-            each coche in coches 
-                li.coche-list-item= coche.marca +', '+ coche.modelo +', '+ coche.matricula
+            each coche in coches
+                
+            //table 
+                thead 
+                    th Matricula:
+                    th Marca:
+                    th Modelo:
+                    th Zona:
+                    th Activo:
+                    th Importe multa:
+                tbody
+                    each coche in coches 
+                        tr
+                            td= coche.matricula
+                            td= coche.marca
+                            td= coche.modelo
+                            if zona
+                                td= zona 
+                            else 
+                                td no hay zona
+                            if activo
+                                td= activo 
+                            else 
+                                td no está activo
+                            if multa
+                                td= multa 
+                            else 
+                                td no hay multa
+                
+                
+                
+               
+//li.coche-list-item= coche.marca +', '+ coche.modelo +', '+ coche.matricula
