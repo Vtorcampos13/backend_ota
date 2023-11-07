@@ -7,7 +7,7 @@ block content
     else if coches 
         ul 
             each coche in coches
-                
+                li.coche-list-item= coche.marca +', '+ coche.modelo +', '+ coche.matricula
             //table 
                 thead 
                     th Matricula:
@@ -38,4 +38,3 @@ block content
                 
                 
                
-//li.coche-list-item= coche.marca +', '+ coche.modelo +', '+ coche.matricula
