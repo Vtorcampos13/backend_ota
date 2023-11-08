@@ -6,6 +6,10 @@ import {isAuthenticated,isAdmin} from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
+router.get("/aparcar",isAuthenticated,(req,res)=>{
+    parkingViewController.aparcar(req,res);
+});
+
 router.get("/",isAuthenticated,(req,res)=>{
     parkingViewController.getAll(req,res);
 });

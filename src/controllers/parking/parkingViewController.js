@@ -59,6 +59,25 @@ const remove = (req,res)=>{
     res.redirect("/parking");
 }
 
+const aparcar = (req,res)=>{
+    const id_coche = req.session.id_coche;
+    const [error,parkings] = parkingController.aparcar(id_coche);
+    if(error){
+        const uriError = encodeURIComponent(error);
+        return res.redirect(`/parking?error=${uriError}`)
+    }
+}
+
+const desaparcar = (req,res)=>{
+    let id_parking = null;
+    const [error,parkings] = parkingController.desaparcar(id_parking);
+    if(error){
+        const uriError = encodeURIComponent(error);
+        return res.redirect(`/parking?error=${uriError}`)
+    }
+}
+
+
 export default{
     getAll,
     getById,
@@ -66,5 +85,6 @@ export default{
     createForm,
     update,
     updateForm,
-    remove
+    remove,
+    aparcar
 };

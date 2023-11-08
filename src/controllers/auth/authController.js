@@ -14,8 +14,8 @@ const login = async(req,res) => {
         const hash = user.password;
 
         if(await bcrypt.compare(password,hash)){
+            req.session.id_coche = user.id_coche
             req.session.user = user.matricula;
-            req.session.rol = user.rol;
         }    
     }
     catch(e){
