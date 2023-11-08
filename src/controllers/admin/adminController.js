@@ -23,23 +23,19 @@ const getAll = async(q=null) => {
 
 const adminGetAll = async() => {
     try{
-        const coches = await parkingModel.findAll({
+        const datos = await parkingModel.findAll({
             include:[
                 {
                     model: multasModel,
                     as: "multas",
-                    attributes: ['importe_multa','fecha_multa']
-                }
-            ],
-            include:[
+                    attributes: ['importe_multa','fecha_multa','activa']
+                },
                 {
                     model: cochesModel,
                     as: "coches",
                     attributes: ['id_coche','matricula','marca','modelo'],
-                    required:false,
-                }
-            ],
-            include:[
+                    right:true,
+                },
                 {
                     model: zonaModel,
                     as: "zona",
@@ -47,12 +43,11 @@ const adminGetAll = async() => {
                 }
             ]
         });
-        return [null, coches];
+        return [null, datos];
     }catch(e){
         return [e.message,null];
     }
 }
-console.log(await adminGetAll())
 
 const getById = async (id) => {
     try {
