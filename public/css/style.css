@@ -22,7 +22,6 @@ img {
     display: flex;
     justify-content: center;
     width: 60%;
-    margin: 10 120 10 100; 
 }
 
 .title-home{
@@ -43,7 +42,7 @@ a:hover{
     cursor: pointer;
 }
 
-.login-form, .register-form, .home-form {
+.login-form, .register-form {
     display: flex;
     flex-direction: column;
 }
@@ -178,4 +177,58 @@ a:hover{
 
 .register-link p {
     font-weight: bolder;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    justify-items: center; 
+    align-items: center;
+    border-radius: 5px;
+    border-color: white;
+}
+  
+.bloque {
+    text-align: center;
+    font-size: 16px;
+    width: 250px;
+    height: 250px;
+    background: #D1031D;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .button-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 1fr); 
+    }
+}
+
+.aparcar {
+    background-image: url(../assets/carparking.png); 
+    background-repeat: no-repeat;
+    background-position: center bottom; 
+}
+
+.desaparcar {
+    background-image: url(../assets/desparking.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.historico {
+    background-image: url(../assets/history\ .png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.cancelar {
+    background-image: url(../assets/cancel.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
 }
