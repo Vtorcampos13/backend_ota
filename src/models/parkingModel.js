@@ -62,7 +62,7 @@ cochesModel.hasMany(parkingModel, { foreignKey: "id_coche"})
 
 zonaModel.hasMany(parkingModel, { foreignKey: "id_zona" })
 
-parkingModel.hasMany(multasModel, { foreignKey: "id_parking"})
+parkingModel.hasOne(multasModel, { foreignKey: "id_parking", as: 'multas'})
 
 
 

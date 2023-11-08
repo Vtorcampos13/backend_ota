@@ -4,38 +4,35 @@ block content
     h1.coches-list-title Lista de coches 
     if error 
         h2 No se han podido encontrar los datos
-    else if coches 
+    else if datos 
         ul 
-            each coche in coches
-                
-            //table 
-                thead 
-                    th Matricula:
-                    th Marca:
-                    th Modelo:
-                    th Zona:
-                    th Activo:
-                    th Importe multa:
-                tbody
-                    each coche in coches 
-                        tr
-                            td= coche.matricula
-                            td= coche.marca
-                            td= coche.modelo
-                            if zona
-                                td= zona 
-                            else 
-                                td no hay zona
-                            if activo
-                                td= activo 
-                            else 
-                                td no está activo
-                            if multa
-                                td= multa 
-                            else 
-                                td no hay multa
+                table 
+                    thead 
+                        th Matricula:
+                        th Marca:
+                        th Modelo:
+                        th Zona:
+                        th Activo:
+                        th Importe multa:
+                    tbody
+                        each dato in datos 
+                            tr
+                                td= dato.coches.matricula
+                                td= dato.coches.marca
+                                td= dato.coches.modelo
+                                if zona
+                                    td= zona 
+                                else 
+                                    td no hay zona
+                                if dato.activo
+                                    td Parking Activo
+                                else 
+                                    td no está activo
+                                if dato.multas
+                                    td= dato.multas.importe_multa + "€"
+                                else 
+                                    td No hay multa
                 
                 
                 
                
-//li.coche-list-item= coche.marca +', '+ coche.modelo +', '+ coche.matricula
