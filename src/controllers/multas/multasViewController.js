@@ -45,9 +45,9 @@ const update = (req,res) =>{
     const [error,multa] = cochesController.update(importe_multa,fecha_multa,id_parking,activa);
     if(error){
         const uriError = encodeURIComponent(error);
-        return res.redirect(`/multas/${id_multa}/edit?error=${uriError}`)
+        return res.redirect(`/multas/${id_multas}/edit?error=${uriError}`)
     }
-    res.redirect(`/multas/${id_multa}`);
+    res.redirect(`/multas/${id_multas}`);
 };
 
 const remove = (req,res)=>{

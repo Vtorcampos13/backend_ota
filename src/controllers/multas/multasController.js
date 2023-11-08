@@ -6,7 +6,7 @@ const getAll = async(q=null) => {
     const options = {};
 
     if(q) {
-        options.where = { id_multa:{ [Op.like]: `%${q}%` },}
+        options.where = { id_multas:{ [Op.like]: `%${q}%` },}
     }
     try{
         const multas = await multasModel.findAll(options);
