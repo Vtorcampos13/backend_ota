@@ -20,8 +20,8 @@ block content
                                 td= dato.coches.matricula
                                 td= dato.coches.marca
                                 td= dato.coches.modelo
-                                if zona
-                                    td= zona 
+                                if dato.zona
+                                    td= dato.zona.nombre_zona
                                 else 
                                     td no hay zona
                                 if dato.activo
