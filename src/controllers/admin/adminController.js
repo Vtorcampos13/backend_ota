@@ -1,4 +1,7 @@
 import cochesModel from "../../models/cochesModel.js";
+import multasModel from "../../models/multasModel.js"
+import parkingModel from "../../models/parkingModel.js"
+import zonaModel from "../../models/zonaModel.js"
 import {Op} from "sequelize";
 
 
@@ -11,6 +14,36 @@ const getAll = async(q=null) => {
     try{
         const coches = await cochesModel.findAll(options);
         return [null, coches];
+    }catch(e){
+        return [e.message,null];
+    }
+}
+
+
+
+const adminGetAll = async() => {
+    try{
+        const datos = await parkingModel.findAll({
+            include:[
+                {
+                    model: multasModel,
+                    as: "multas",
+                    attributes: ['importe_multa','fecha_multa','activa']
+                },
+                {
+                    model: cochesModel,
+                    as: "coches",
+                    attributes: ['id_coche','matricula','marca','modelo'],
+                    right:true,
+                },
+                {
+                    model: zonaModel,
+                    as: "zona",
+                    attributes: ['id_zona','nombre_zona'],
+                }
+            ]
+        });
+        return [null, datos];
     }catch(e){
         return [e.message,null];
     }
@@ -79,6 +112,7 @@ const remove = async (id) => {
 }
 
 export {
+    adminGetAll,
     getAll,
     getById,
     create,
@@ -89,6 +123,7 @@ export {
 
 
 export default {
+    adminGetAll,
     getAll,
     getById,
     create,

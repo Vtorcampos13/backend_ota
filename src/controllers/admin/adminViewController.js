@@ -1,15 +1,24 @@
-import cochesController from "../coches/cochesController.js";
+import adminController from "./adminController.js";
 
- const getAll = async (req,res) =>{
+const adminGetAll = async (req, res) => {
     const errorMessage = req.query.error;
     const q = req.query.q;
-    const [error, coches] = await cochesController.getAll(q);
-    res.render("admin/list",{error,coches});
+    const [error, datos] = await adminController.adminGetAll();
+    res.render("admin/list",{error,datos});
 }
+
+
+
+/*  const getAll = async (req,res) =>{
+    const errorMessage = req.query.error;
+    const q = req.query.q;
+    const [error, coches] = await adminController.getAll(q);
+    res.render("admin/list",{error,coches});
+} */
 
 const getById = async (req,res) =>{
     const id = req.params.id;
-    const [error,coche] = await cochesController.getById(id);
+    const [error,coche] = await adminController.getById(id);
     res.render("coches/show",{error,coche,session:req.session});
 }
 
@@ -20,7 +29,7 @@ const createForm = (req,res)=>{
 
 const create = (req,res) =>{
     const {marca,modelo,matricula,password} = req.body;
-    const [error,coche] = cochesController.create(marca,modelo,matricula,password);
+    const [error,coche] = adminController.create(marca,modelo,matricula,password);
     if(error){
         const uriError = encodeURIComponent(error);
         return res.redirect(`/coches/new?error=${uriError}`)
@@ -31,7 +40,7 @@ const create = (req,res) =>{
 const updateForm = async(req,res) =>{
     const errorMessage = req.query.error;
     const id = req.params.id;
-    const [error,coche] = await cochesController.getById(id);
+    const [error,coche] = await adminController.getById(id);
     if(error){
         res.redirect("/coches");
     }
@@ -42,7 +51,7 @@ const update = (req,res) =>{
     const id = req.params.id;
     console.log("params id",id)
     const {marca, modelo, matricula, password} = req.body;
-    const [error,coche] = cochesController.update(marca, modelo, matricula, password);
+    const [error,coche] = adminController.update(marca, modelo, matricula, password);
     if(error){
         const uriError = encodeURIComponent(error);
         return res.redirect(`/coches/${id_coche}/edit?error=${uriError}`)
@@ -52,7 +61,7 @@ const update = (req,res) =>{
 
 const remove = (req,res)=>{
     const id = req.params.id;
-    const [error,coche] = cochesController.remove(id);
+    const [error,coche] = adminController.remove(id);
     if(error){
         const uriError = encodeURIComponent(error);
         return res.redirect(`/coches?error=${uriError}`)
@@ -61,7 +70,8 @@ const remove = (req,res)=>{
 }
 
 export default{
-    getAll,
+    adminGetAll,
+    //getAll,
     getById,
     create,
     createForm,
