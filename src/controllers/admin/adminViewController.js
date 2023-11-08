@@ -3,9 +3,11 @@ import adminController from "./adminController.js";
 const adminGetAll = async (req, res) => {
     const errorMessage = req.query.error;
     const q = req.query.q;
-    const [error, coches] = await adminController.adminGetAll();
-    res.render("admin/list",{error,coches});
+    const [error, datos] = await adminController.adminGetAll();
+    res.render("admin/list",{error,datos});
 }
+
+
 
 /*  const getAll = async (req,res) =>{
     const errorMessage = req.query.error;

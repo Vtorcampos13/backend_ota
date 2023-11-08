@@ -84,13 +84,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `otabilbao`.`multas` ;
 
 CREATE TABLE IF NOT EXISTS `otabilbao`.`multas` (
-  `id_multas` INT NOT NULL AUTO_INCREMENT,
+  `id_multa` INT NOT NULL AUTO_INCREMENT,
   `importe_multa` TINYINT NULL,
   `fecha_multa` DATETIME NULL,
   `id_parking` INT NOT NULL,
   `activa` BIT NULL DEFAULT 1,
-  PRIMARY KEY (`id_multas`),
-  UNIQUE INDEX `id_multas_UNIQUE` (`id_multas` ASC) VISIBLE,
+  PRIMARY KEY (`id_multa`),
+  UNIQUE INDEX `id_multa_UNIQUE` (`id_multa` ASC) VISIBLE,
   INDEX `fk_multas_parking1_idx` (`id_parking` ASC) VISIBLE,
   CONSTRAINT `fk_multas_parking1`
     FOREIGN KEY (`id_parking`)

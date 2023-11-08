@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import session from "express-session";
+import { isAuthenticated } from "./middlewares/authMiddleware.js";
 
 import router from "./router/router.js";
 
@@ -25,7 +26,7 @@ app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.get("/",(req,res)=>{
+app.get("/",isAuthenticated,(req,res)=>{
     res.render("home");
 });
 
