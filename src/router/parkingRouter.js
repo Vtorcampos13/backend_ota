@@ -6,15 +6,17 @@ import {isAuthenticated,isAdmin} from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
-router.get("/aparcar",isAuthenticated,(req,res)=>{
-    parkingViewController.aparcar(req,res);
-});
+
 
 router.get("/",isAuthenticated,(req,res)=>{
-    parkingViewController.getAll(req,res);
+    parkingViewController.aparcarForm(req,res);
 });
 
-router.get("/new",(req,res) => {
+router.get("/felicidades",isAuthenticated,(req,res)=>{
+    parkingViewController.felicidades(req,res);
+});
+
+/* router.get("/new",(req,res) => {
     parkingViewController.createForm(req,res);   
 })
 
@@ -34,6 +36,14 @@ router.post("/:id",(req,res)=>{
 
 router.get("/:id/delete",(req,res)=>{
     parkingViewController.remove(req,res);
+}); */
+
+router.post("/aparcar",isAuthenticated,(req,res)=>{
+    parkingViewController.aparcar(req,res);
+});
+
+router.post("/desaparcar",isAuthenticated,(req,res)=>{
+    parkingViewController.desaparcar(req,res);
 });
 
 export default router;
