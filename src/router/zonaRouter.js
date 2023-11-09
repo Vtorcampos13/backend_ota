@@ -6,7 +6,7 @@ import {isAuthenticated,isAdmin} from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
-router.get("/",isAuthenticated,(req,res)=>{
+router.get("/",isAuthenticated,isAdmin,(req,res)=>{
     zonaViewController.getAll(req,res);
 });
 

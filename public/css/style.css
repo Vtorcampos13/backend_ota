@@ -181,12 +181,14 @@ a:hover{
 
 .button-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
     justify-items: center; 
     align-items: center;
+    grid-template-columns: repeat(2 , 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
     border-radius: 5px;
     border-color: white;
+    padding: 0px 230px;
 }
   
 .bloque {
