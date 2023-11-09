@@ -78,6 +78,10 @@ const aparcar =  async(req,res)=>{
     const id_zona = req.body.zona
     const tiempo = req.body.tiempo
     const id_coche = req.session.id_coche;
+    console.log("el id de zona es ", id_zona)
+    console.log("el id de coche es ", id_coche)
+    console.log("el tiempo a sumar es ", tiempo)
+    console.log("la hora es ", new Date())
     const [error, aparcado] = await parkingController.aparcar(id_coche, id_zona, tiempo);
     res.redirect(`/parking/felicidades`)
 

@@ -85,12 +85,14 @@ function fecha(fecha) {
 
 
 
+
 function sumarHoras(tiempo) {
     let now = new Date();
     now.setHours(now.getHours() + tiempo)
+    console.log("Se van a sumar", tiempo)
+    console.log("son las", now)
     return fecha(now)
 }
-
 
 
 const aparcar = async(id_coche,id_zona,tiempo) => {
