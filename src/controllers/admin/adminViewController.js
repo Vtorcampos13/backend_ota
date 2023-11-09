@@ -4,8 +4,8 @@ const adminGetAll = async (req, res) => {
     const errorMessage = req.query.error;
     const q = req.query.q;
     const [error, datos] = await adminController.adminGetAll();
-    console.log(datos[0].multas);
-    res.render("admin/list",{error,datos});
+/*     console.log(datos[0].multas);
+ */    res.render("admin/list",{error,datos});
 }
 
 
