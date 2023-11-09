@@ -19,7 +19,7 @@ OTA Bilbao es un proyecto de backend centrado en la gestión y optimización del
 
 ### Generador de multas
 
--**Multas:** Se generarán multas cuando el tiempo de estacionamiento abonado se supere.
+- **Multas:** Se generarán multas cuando el tiempo de estacionamiento abonado se supere.
 
 ### Historial y Estadísticas
 
