@@ -28,6 +28,14 @@ const create = async (req,res) =>{
     res.redirect("/parking");
 }
 
+const errordesaparcar = (req,res) =>{
+    res.render("parking/errordesaparcar");
+}
+
+const erroraparcar = (req,res) =>{
+    res.render("parking/erroraparcar");
+}
+
 /* const updateForm = async(req,res) =>{
     const errorMessage = req.query.error;
     const id = req.params.id;
@@ -78,10 +86,6 @@ const aparcar =  async(req,res)=>{
     const id_zona = req.body.zona
     const tiempo = req.body.tiempo
     const id_coche = req.session.id_coche;
-    console.log("el id de zona es ", id_zona)
-    console.log("el id de coche es ", id_coche)
-    console.log("el tiempo a sumar es ", tiempo)
-    console.log("la hora es ", new Date())
     const [error, aparcado] = await parkingController.aparcar(id_coche, id_zona, tiempo);
     res.redirect(`/parking/felicidades`)
 
@@ -115,5 +119,7 @@ export default{
     felicidades,
     nofelicidades,
     aparcarForm,
-    desaparcar
+    desaparcar,
+    erroraparcar,
+    errordesaparcar
 };

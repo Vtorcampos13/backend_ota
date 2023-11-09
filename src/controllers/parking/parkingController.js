@@ -88,21 +88,17 @@ function fecha(fecha) {
 
 function sumarHoras(tiempo) {
     let now = new Date();
-    now.setHours(now.getHours() + tiempo)
-    console.log("Se van a sumar", tiempo)
-    console.log("son las", now)
-    return fecha(now)
-}
+    now.setHours(now.getHours() + parseInt(tiempo))
+    return fecha(new Date(now))
+  }
+
+
 
 
 const aparcar = async(id_coche,id_zona,tiempo) => {
-    console.log(tiempo)
     const hoy = new Date();
     const fecha_inicio = fecha(hoy);
-    console.log(fecha_inicio)
-    console.log(tiempo)
     const fecha_fin= sumarHoras(tiempo)
-    console.log(fecha_fin);
     try {
         const aparcado = await parkingModel.create({fecha_inicio,fecha_fin,id_zona,id_coche})
         return [null,aparcado]
@@ -112,7 +108,6 @@ const aparcar = async(id_coche,id_zona,tiempo) => {
         return [e.message, null]
     }
 }
-
 
 
 const desaparcar = async (id_coche) => {
