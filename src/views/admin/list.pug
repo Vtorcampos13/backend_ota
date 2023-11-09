@@ -32,8 +32,8 @@ block content
                                     td no está activo
                                 if dato.multas
                                     td= dato.multas.importe_multa + "€"
-                                      form(action=`/multas/${dato.multas.id_multas}`, method="post")
-                                        button Eliminar
+                                      form(action=`/multas/${dato.multas.id_multas}/remove`, method="get")
+                                        button Indultar
                                         a(href='/multas/'+dato.multas.id_multas+'/remove') 
                                 else 
                                     td No hay multa
