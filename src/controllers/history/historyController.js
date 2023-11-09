@@ -4,28 +4,25 @@ import zonaModel from "../../models/zonaModel.js"
 import {Op} from "sequelize";
 
 
-const historyGetAll = async() => {
+const historyGetAll = async(id_coche) => {
     try{
-        const datos = await historyModel.findAll({
+        const datos = await parkingModel.findAll({
+            where:{"id_coche":id_coche},
+            attributes: ['fecha_inicio', 'fecha_fin'],
             include:[
                 {
                     model: cochesModel,
                     as: "coches",
                     attributes: ['id_coche','matricula','marca','modelo'],
-                    right:true,
                 },
                 {
                     model: zonaModel,
                     as: "zona",
                     attributes: ['id_zona','nombre_zona'],
                 },
-                {
-                    model: parkingModel,
-                    as: "parking",
-                    attributes: ['fecha_inicio', 'fecha_fin'],
-                },
             ]
         });
+        console.log("datos:", datos);
         return [null, datos];
     }catch(e){
         return [e.message,null];
