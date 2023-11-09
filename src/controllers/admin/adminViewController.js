@@ -38,7 +38,7 @@ const create = (req,res) =>{
     res.redirect("/coches");
 }
 
-const updateForm = async(req,res) =>{
+/* const updateForm = async(req,res) =>{
     const errorMessage = req.query.error;
     const id = req.params.id;
     const [error,coche] = await adminController.getById(id);
@@ -46,9 +46,9 @@ const updateForm = async(req,res) =>{
         res.redirect("/coches");
     }
     res.render("coches/edit",{error:errorMessage,coche});
-}
+} */
 
-const update = (req,res) =>{
+/* const update = (req,res) =>{
     const id = req.params.id;
     console.log("params id",id)
     const {marca, modelo, matricula, password} = req.body;
@@ -58,7 +58,7 @@ const update = (req,res) =>{
         return res.redirect(`/coches/${id_coche}/edit?error=${uriError}`)
     }
     res.redirect(`/coches/${id_coche}`);
-};
+}; */
 
 const remove = (req,res)=>{
     const id = req.params.id;
@@ -76,7 +76,7 @@ export default{
     getById,
     create,
     createForm,
-    update,
-    updateForm,
+    //update,
+    //updateForm,
     remove
 };

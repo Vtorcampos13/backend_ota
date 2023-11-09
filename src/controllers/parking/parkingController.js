@@ -1,7 +1,6 @@
 import parkingModel from "../../models/parkingModel.js";
 import {Op} from "sequelize";
 
-
 const getAll = async(q=null) => {
     const options = {};
 
@@ -38,7 +37,7 @@ const create = async (fecha_inicio,fecha_fin,id_coche,id_zona,activo) => {
 
 const update = async(id_parking,fecha_inicio,fecha_fin,id_coche,id_zona,activo) => {
     
-    if(id == undefined){
+    if(id_parking == undefined){
         const error = "Tienes que especificar un ID válido";
         return [error,null];
     }
@@ -76,12 +75,59 @@ const remove = async (id) => {
     }
 }
 
+
+function fecha() {
+    let date = new Date();
+    date.setMinutes(0);
+    date.setSeconds(0);
+    return date.toISOString().slice(0, 19).replace('T', ' ');
+}
+
+
+
+const aparcar = async(id_coche,id_zona) => {
+    const fecha_inicio = fecha();
+    const fecha_fin = "2026-11-11 15:00:00"
+    try {
+        const aparcado = await parkingModel.create({fecha_inicio,fecha_fin,id_zona,id_coche})
+        return [null,aparcado]
+    }
+    catch(e){
+        console.log(e)
+        return [e.message, null]
+    }
+}
+
+const desaparcar = async (id) => {
+    const fecha_fin = fecha()
+    const activo = 0
+    
+    try {
+        // Sacar el id con un select id from where matricula y activo = true
+        await parkingModel.update({fecha_fin,activo}, {
+            where: {
+                id_parking: id
+                
+            }
+        })
+        const parkings = await parkingModel.findByPk(id);
+        return [null,parkings]
+    }
+    catch(e){
+        console.log(e)
+    }
+}
+
+
+
 export {
     getAll,
     getById,
     create,
     update,
-    remove
+    remove,
+    aparcar,
+    desaparcar
 };
 
 
@@ -91,5 +137,7 @@ export default {
     getById,
     create,
     update,
-    remove
+    remove,
+    aparcar,
+    desaparcar
 };
