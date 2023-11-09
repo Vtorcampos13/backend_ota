@@ -6,6 +6,7 @@ import zonaRouter from "./zonaRouter.js";
 import cochesRouter from "./cochesRouter.js";
 import adminRouter from "./adminRouter.js";
 import authRouter from "./authRouter.js";
+import historyRouter from "./historyRouter.js";
 
 const router = Router();
 
@@ -18,6 +19,8 @@ router.use("/coches", cochesRouter);
 router.use("/parking", parkingRouter);
 
 router.use("/admin", adminRouter);
+
+router.use("/history", historyRouter);
 
 router.use("/",authRouter);
 
