@@ -76,18 +76,31 @@ const remove = async (id) => {
 }
 
 
-function fecha() {
-    let date = new Date();
-    date.setMinutes(0);
-    date.setSeconds(0);
-    return date.toISOString().slice(0, 19).replace('T', ' ');
+function fecha(fecha) {
+    // Transforma la fecha actual a formato Datetime de MYSQL
+    fecha.setMinutes(0);
+    fecha.setSeconds(0);
+    return fecha.toISOString().slice(0, 19).replace('T', ' ');
 }
 
 
 
-const aparcar = async(id_coche,id_zona) => {
-    const fecha_inicio = fecha();
-    const fecha_fin = "2026-11-11 15:00:00"
+function sumarHoras(tiempo) {
+    let now = new Date();
+    now.setHours(now.getHours() + tiempo)
+    return fecha(now)
+}
+
+
+
+const aparcar = async(id_coche,id_zona,tiempo) => {
+    console.log(tiempo)
+    const hoy = new Date();
+    const fecha_inicio = fecha(hoy);
+    console.log(fecha_inicio)
+    console.log(tiempo)
+    const fecha_fin= sumarHoras(tiempo)
+    console.log(fecha_fin);
     try {
         const aparcado = await parkingModel.create({fecha_inicio,fecha_fin,id_zona,id_coche})
         return [null,aparcado]
@@ -98,20 +111,21 @@ const aparcar = async(id_coche,id_zona) => {
     }
 }
 
-const desaparcar = async (id) => {
-    const fecha_fin = fecha()
+
+const desaparcar = async (id_coche) => {
+    const hoy = new Date();
+    const fecha_fin = fecha(hoy)
     const activo = 0
     
     try {
         // Sacar el id con un select id from where matricula y activo = true
-        await parkingModel.update({fecha_fin,activo}, {
+        let aparcado = await parkingModel.findOne({
             where: {
-                id_parking: id
-                
-            }
-        })
-        const parkings = await parkingModel.findByPk(id);
-        return [null,parkings]
+                id_coche: id_coche,
+                activo: 1
+            }});
+        await aparcado.update({fecha_fin,activo})
+        return [null,aparcado]
     }
     catch(e){
         console.log(e)
