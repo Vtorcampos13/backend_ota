@@ -5,7 +5,7 @@ const historyGetAll = async (req,res) =>{
     const errorMessage = req.query.error;
     console.log("venga ya !");
     const [error, datos] = await historyController.historyGetAll(id_coche);
-    res.render("history/history",{error,datos});
+    res.render("./history/history",{error,datos});
 }
 
 
