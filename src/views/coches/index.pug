@@ -1,0 +1,9 @@
+extends ../layout
+
+block content 
+    h1 Página coche 
+    if error 
+        h2= error
+    form(action=`/coches/${coche.id}`, method="post")
+        label(for="marca") Marca 
+        input(type="text", name="marca", id="marca" value=coche.marca)  

@@ -16,6 +16,10 @@ router.get("/felicidades",isAuthenticated,(req,res)=>{
     parkingViewController.felicidades(req,res);
 });
 
+router.get("/nofelicidades",isAuthenticated,(req,res)=>{
+    parkingViewController.nofelicidades(req,res);
+});
+
 /* router.get("/new",(req,res) => {
     parkingViewController.createForm(req,res);   
 })
@@ -40,6 +44,10 @@ router.get("/:id/delete",(req,res)=>{
 
 router.post("/aparcar",isAuthenticated,(req,res)=>{
     parkingViewController.aparcar(req,res);
+});
+
+router.post("/desaparcar",isAuthenticated,(req,res)=>{
+    parkingViewController.desaparcar(req,res);
 });
 
 router.post("/desaparcar",isAuthenticated,(req,res)=>{

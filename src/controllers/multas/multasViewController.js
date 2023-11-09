@@ -40,19 +40,20 @@ const updateForm = async(req,res) =>{
 
 const update = (req,res) =>{
     const id = req.params.id;
-    console.log("params id",id)
     const {importe_multa,fecha_multa,id_parking,activa} = req.body;
-    const [error,multa] = cochesController.update(importe_multa,fecha_multa,id_parking,activa);
+    const [error,multa] = multasController.update(importe_multa,fecha_multa,id_parking,activa);
     if(error){
         const uriError = encodeURIComponent(error);
-        return res.redirect(`/multas/${id_multa}/edit?error=${uriError}`)
+        return res.redirect(`/multas/${id_multas}/edit?error=${uriError}`)
     }
-    res.redirect(`/multas/${id_multa}`);
+    res.redirect(`/multas/${id_multas}`);
 };
 
-const remove = (req,res)=>{
+const remove = async (req,res)=>{
+    
     const id = req.params.id;
-    const [error,multa] = multasController.remove(id);
+    console.log("el id es", id)
+    const [error,multa] = await multasController.remove(id);
     if(error){
         const uriError = encodeURIComponent(error);
         return res.redirect(`/multas?error=${uriError}`)

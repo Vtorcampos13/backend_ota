@@ -26,7 +26,12 @@ router.post("/:id",(req,res)=>{
     multasViewController.update(req,res);
 });
 
-router.get("/:id/delete",(req,res)=>{
+router.get("/:id/remove",(req,res)=>{
+    multasViewController.remove(req,res);
+});
+
+
+router.post("/borrar",(req,res)=>{
     multasViewController.remove(req,res);
 });
 
