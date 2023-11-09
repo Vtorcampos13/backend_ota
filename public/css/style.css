@@ -183,7 +183,7 @@ a:hover{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    justify-items: center; 
+    justify-items:center; 
     align-items: center;
     border-radius: 5px;
     border-color: white;

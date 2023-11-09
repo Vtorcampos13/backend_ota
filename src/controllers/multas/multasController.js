@@ -6,7 +6,7 @@ const getAll = async(q=null) => {
     const options = {};
 
     if(q) {
-        options.where = { id_multa:{ [Op.like]: `%${q}%` },}
+        options.where = { id_multas:{ [Op.like]: `%${q}%` },}
     }
     try{
         const multas = await multasModel.findAll(options);
@@ -39,9 +39,9 @@ const create = async (importe_multa,fecha_multa,id_parking,activa) => {
     }
 }
 
-const update = async(importe_multa,fecha_multa,id_parking,activa) => {
+const update = async(id,importe_multa,fecha_multa,id_parking,activa) => {
     
-    if(id == undefined){
+    if(id === undefined){
         const error = "Tienes que especificar un ID válido";
         return [error,null];
     }
@@ -50,7 +50,6 @@ const update = async(importe_multa,fecha_multa,id_parking,activa) => {
         return [error, null];
     }
     try {
-        console.log("id",id);
         const multa = await multasModel.findByPk(id);
         multa.importe_multa = importe_multa;
         multa.fecha_multa = fecha_multa;
@@ -67,6 +66,7 @@ const update = async(importe_multa,fecha_multa,id_parking,activa) => {
 const remove = async (id) => {
     try {
         const multa = await multasModel.findByPk(id);
+        multa.destroy()
         if(!multa){
             const error = "No se ha encontrado ningún elemento con ese ID";
             return[error,null];

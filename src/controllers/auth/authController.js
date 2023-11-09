@@ -43,7 +43,7 @@ const adminLogin = async(req,res) => {
         const errorUri = encodeURIComponent("credenciales incorrectas");
         return res.redirect("/admin/login?error="+errorUri);
     }
-    
+     
     res.redirect("/");
 }
 
