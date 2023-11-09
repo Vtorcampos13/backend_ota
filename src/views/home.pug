@@ -6,7 +6,8 @@ block content
 
     .button-grid
         button(class='bloque aparcar' formaction='rutaAparcar') Aparcar
-        button(class='bloque desaparcar' formaction='rutaDesaparcar') Desaparcar
+        form(action="/parking/desaparcar" method="post")
+            button(name="desaparcar" class='bloque desaparcar' formaction='/parking/desaparcar') Desaparcar
         button(class='bloque historico' formaction='rutaHistorico') Histórico
         button(class='bloque cancelar' formaction='rutaCancelar') Cancelar denuncia
 
