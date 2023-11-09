@@ -38,6 +38,7 @@ Configura las Variables de Entorno:
 
 Crea un archivo .env en la raíz del proyecto.
 Puedes ver la plantilla .env.example para rellenar tu .env
+
 Completa las variables de entorno con la información necesaria.
 
 Inicializa la Aplicación Utilizando Docker Compose:
