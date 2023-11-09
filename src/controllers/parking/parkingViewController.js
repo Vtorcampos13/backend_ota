@@ -49,8 +49,15 @@ const update = (req,res) =>{
     res.redirect(`/parking/${id_parking}`);
 }; */
 
-const aparcar = async (req, res) => {
-  const { cocheId, zonaId, fechaInicio } = req.body;
+const remove = (req,res)=>{
+    const id = req.params.id;
+    const [error,parkings] = parkingController.remove(id);
+    if(error){
+        const uriError = encodeURIComponent(error);
+        return res.redirect(`/parking?error=${uriError}`)
+    }
+    res.redirect("/parking");
+}
 
 const aparcarForm = (req, res)=>{
     const error = req.query.error;
