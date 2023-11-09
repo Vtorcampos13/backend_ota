@@ -14,6 +14,8 @@ block content
                         th Zona:
                         th Activo:
                         th Importe multa:
+                        th Fecha inicio: 
+                        th Fecha finalización:
                     tbody
                         each dato in datos 
                             tr
@@ -30,8 +32,15 @@ block content
                                     td no está activo
                                 if dato.multas
                                     td= dato.multas.importe_multa + "€"
+                                      form(action=`/multas/${dato.multas.id_multas}`, method="post")
+                                        button Eliminar
+                                        a(href='/multas/'+dato.multas.id_multas+'/remove') 
                                 else 
                                     td No hay multa
+                                td= dato.fecha_inicio 
+                                td= dato.fecha_fin 
+                          
+                                
                 
                 
                 
