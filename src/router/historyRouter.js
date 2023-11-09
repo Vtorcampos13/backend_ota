@@ -7,7 +7,7 @@ import {isAuthenticated,isAdmin} from "../middlewares/authMiddleware.js";
 const router = Router();
 
 router.get("/",isAuthenticated,(req,res)=>{
-    historyViewController.getAll(req,res);
+    historyViewController.historyGetAll(req,res);
 }); 
 
 

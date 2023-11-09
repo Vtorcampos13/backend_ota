@@ -12,6 +12,8 @@ block content
                         th Marca:
                         th Modelo:
                         th Zona:
+                        th Fecha inicio: 
+                        th Fecha fin:
                     tbody
                         each dato in datos 
                             tr
@@ -20,9 +22,4 @@ block content
                                 td= dato.coches.modelo
                                 td= dato.zona.nombre_zona
                                 td= dato.fecha_inicio 
-                                td= dato.fecha_fin 
-
-                
-                
-                
-               
+                                td= dato.fecha_fin          
