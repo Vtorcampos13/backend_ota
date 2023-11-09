@@ -2,14 +2,13 @@ extends layout
 
 block content 
 
-    h1.login-title Iniciar Sesión
-        div.home-ul
-            form.home-form(action="/login", method="post")
-            label.label-class-home(for="matricula") Matrícula
-            input.input-class-home(type="text", name="matricula", id="matricula")
-            label.label-class-home(for="password") Contraseña
-            input.input-class-home(type="password", name="password", id="password")
-            input.button-class-home(type="submit", value="Iniciar sesión")
+    h1.title-home Bienvenido
 
-        div.image-container
+    .button-grid
+        button(class='bloque aparcar' formaction='rutaAparcar') Aparcar
+        button(class='bloque desaparcar' formaction='rutaDesaparcar') Desaparcar
+        button(class='bloque historico' formaction='rutaHistorico') Histórico
+        button(class='bloque cancelar' formaction='rutaCancelar') Cancelar denuncia
+
+    div.image-container
         img.image(src="https://play-lh.googleusercontent.com/Y4kNPD0EqQ4tv3wKiD3esoQcD4X4cqXGIMuyGdnOlcTplZSG0W6vBJ0bMI1x9yNrsEI")

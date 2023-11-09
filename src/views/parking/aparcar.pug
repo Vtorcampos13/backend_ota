@@ -1,14 +1,21 @@
 extends ../layout
 
 block content
-  h1 Aparcar Coche
-  if error
-    p.error= error
-  form(action="/aparcar", method="POST")
-    label(for="cocheId") Coche ID:
-    input(type="text", name="cocheId")
-    label(for="zonaId") Zona ID:
-    input(type="text", name="zonaId")
-    label(for="fechaInicio") Fecha de Inicio:
-    input(type="datetime-local", name="fechaInicio")
-    button(type="submit") Aparcar Coche
+    h1.parking-list-title Aparcar
+        if error 
+            h2 No se han podido encontrar los datos
+        else
+    form(method="post" action="/parking/aparcar")
+        label(for="zona") Selecciona zona
+        select(name="zona")
+            option(value="1") Rekalde 
+            option(value="2") Miribilla
+            option(value="3") Casco Viejo
+            option(value="4") Ensanche
+            option(value="5") Indautxu
+            option(value="6") Deusto
+        label(for="tiempo") Cuantas horas quieres aparcar 
+        input(type="number")
+        p vas a aparcar 
+            span horas
+        input(type="submit")

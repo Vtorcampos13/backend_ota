@@ -5,15 +5,19 @@ import { isAuthenticated, isAdmin } from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
-// Ruta para mostrar el formulario de aparcar
-router.get('/aparcar', isAuthenticated, (req, res) => {
-  parkingViewController.aparcarForm(req, res); // Llama a la función del controlador para mostrar el formulario
+
+
+router.get("/",isAuthenticated,(req,res)=>{
+    parkingViewController.aparcarForm(req,res);
 });
 
-// Ruta para procesar el formulario de aparcamiento (POST)
-router.post('/aparcar', isAuthenticated, async (req, res) => {
-  // Obtén los datos del formulario de req.body
-  const { cocheId, zonaId, fechaInicio } = req.body;
+router.get("/felicidades",isAuthenticated,(req,res)=>{
+    parkingViewController.felicidades(req,res);
+});
+
+/* router.get("/new",(req,res) => {
+    parkingViewController.createForm(req,res);   
+})
 
   // Llama a la función del controlador para procesar el formulario
   parkingViewController.aparcar(req, res, cocheId, zonaId, fechaInicio);
@@ -31,6 +35,18 @@ router.post('/desaparcar', isAuthenticated, async (req, res) => {
 
   // Llama a la función del controlador para procesar el formulario
   parkingViewController.desaparcar(req, res, estacionamientoId, fechaFin);
+});
+
+router.get("/:id/delete",(req,res)=>{
+    parkingViewController.remove(req,res);
+}); */
+
+router.post("/aparcar",isAuthenticated,(req,res)=>{
+    parkingViewController.aparcar(req,res);
+});
+
+router.post("/desaparcar",isAuthenticated,(req,res)=>{
+    parkingViewController.desaparcar(req,res);
 });
 
 export default router;
