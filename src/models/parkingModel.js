@@ -5,28 +5,42 @@ import cochesModel from "./cochesModel.js";
 import multasModel from "./multasModel.js";
 import zonaModel from "./zonaModel.js";
 
-const parkingModel = sequelize.define('Parking', {
-    fecha_inicio: {
-      type: DataTypes.DATE,
-      allowNull: false,
+const parkingModel = sequelize.define("parking",
+{
+    id_parking:{
+        type: DataTypes.INTEGER,
+        allowNull:false,
+        primaryKey:true,
+        autoIncrement:true,
+        unique:true,
     },
-    fecha_fin: {
-      type: DataTypes.DATE,
-      allowNull: false,
+    fecha_inicio:{
+        type: DataTypes.DATE,
     },
-    id_coche: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    id_zona: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    fecha_fin:{
+        type: DataTypes.DATE,
     },
     activo: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:1,
     },
-  });
+    id_zona: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'zona', 
+          key: 'id_zona',
+        }
+    },
+    id_coche: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'coches', 
+          key: 'id_coche',
+        }
+    },
+})
 
 parkingModel.belongsTo(cochesModel, {
     foreignKey: "id_coche",
