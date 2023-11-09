@@ -17,6 +17,10 @@ OTA Bilbao es un proyecto de backend centrado en la gestión y optimización del
 
 - **Pago:** Facilita el pago del estacionamiento a través de la aplicación y las tarifas según las diferentes zonas.
 
+### Generador de multas
+
+-**Multas:** Se generarán multas cuando el tiempo de estacionamiento abonado se supere.
+
 ### Historial y Estadísticas
 
 - **Historial de Estacionamiento:** Mantiene un registro del historial de estacionamiento de los usuarios, incluyendo zonas y duración.
