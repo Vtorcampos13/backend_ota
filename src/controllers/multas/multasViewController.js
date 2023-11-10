@@ -38,7 +38,7 @@ const updateForm = async(req,res) =>{
     res.render("multas/edit",{error:errorMessage,multa});
 }
 
-const update = (req,res) =>{
+/* const update = (req,res) =>{
     const id = req.params.id;
     const {importe_multa,fecha_multa,id_parking,activa} = req.body;
     const [error,multa] = multasController.update(importe_multa,fecha_multa,id_parking,activa);
@@ -47,12 +47,11 @@ const update = (req,res) =>{
         return res.redirect(`/multas/${id_multas}/edit?error=${uriError}`)
     }
     res.redirect(`/multas/${id_multas}`);
-};
+}; */
 
 const remove = async (req,res)=>{
     
     const id = req.params.id;
-    console.log("el id es", id)
     const [error,multa] = await multasController.remove(id);
     if(error){
         const uriError = encodeURIComponent(error);
@@ -61,12 +60,30 @@ const remove = async (req,res)=>{
     res.redirect("/multas");
 }
 
+const multado = (req,res)=>{
+    res.render("multas/multado");
+}
+
+
+const pagarMulta = async (req,res)=>{
+    const id_coche = req.session.id_coche;
+    const [error, pagar] = await multasController.pagarMulta(id_coche);
+    res.redirect(`/multas/gracias`)
+}
+
+const gracias = async (req,res)=>{
+    res.render("multas/gracias");
+}
+
 export default{
     getAll,
     getById,
     create,
     createForm,
-    update,
+    //update,
     updateForm,
-    remove
+    remove,
+    multado,
+    pagarMulta,
+    gracias
 };

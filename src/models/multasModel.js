@@ -4,7 +4,7 @@ import sequelize from "../config/sequelize.js";
 
 const multasModel = sequelize.define("multas",
 {
-    id_multas:{
+    id_multa:{
         type: DataTypes.INTEGER,
         allowNull:false,
         primaryKey:true,

@@ -28,7 +28,7 @@ const adminGetAll = async() => {
                 {
                     model: multasModel,
                     as: "multas",
-                    attributes: ['id_multas','importe_multa','fecha_multa','activa']
+                    attributes: ['id_multa','importe_multa','fecha_multa','activa']
                 },
                 {
                     model: cochesModel,

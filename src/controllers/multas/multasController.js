@@ -1,4 +1,5 @@
 import multasModel from "../../models/multasModel.js";
+import parkingModel from "../../models/parkingModel.js";
 import {Op} from "sequelize";
 
 
@@ -78,12 +79,41 @@ const remove = async (id) => {
     }
 }
 
+const pagarMulta = async (id_coche) => {
+    const multado = await parkingModel.findOne({
+        include: [
+            {
+                model: multasModel,
+                as: "multas",
+                attributes: ['id_multa','importe_multa','fecha_multa','activa']
+        }
+    ],
+        where:{
+            id_coche:id_coche,
+            activo: 1
+        }
+    })
+    if (multado) {
+        const cocheMultado = await multasModel.findOne({
+            where: {
+                id_multa: multado.multas.id_multa
+            }
+        })
+        const activa = false;
+        await cocheMultado.update({activa})
+        return [null,cocheMultado]
+    } else {
+        console.log("no hay multa")
+    }
+}
+
 export {
     getAll,
     getById,
     create,
     update,
-    remove
+    remove,
+    pagarMulta
 };
 
 
@@ -93,5 +123,6 @@ export default {
     getById,
     create,
     update,
-    remove
+    remove,
+    pagarMulta
 };

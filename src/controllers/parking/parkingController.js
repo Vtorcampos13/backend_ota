@@ -139,7 +139,8 @@ export {
     update,
     remove,
     aparcar,
-    desaparcar
+    desaparcar,
+    fecha
 };
 
 
@@ -151,5 +152,6 @@ export default {
     update,
     remove,
     aparcar,
-    desaparcar
+    desaparcar,
+    fecha
 };

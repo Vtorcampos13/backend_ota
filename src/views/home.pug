@@ -9,7 +9,8 @@ block content
         form(action="/parking/desaparcar" method="post")
             button(name="desaparcar" class='bloque desaparcar' formaction='/parking/desaparcar') Desaparcar
         button(class='bloque historico', onclick="window.location.href='/history'" ) Histórico
-        button(class='bloque cancelar' formaction='rutaCancelar') Cancelar denuncia
+        form(action="/multas/pagarmulta" method="post")
+            button(class='bloque cancelar' formaction='/multas/pagarmulta') Cancelar denuncia
 
     div.image-container
         img.image(src="https://play-lh.googleusercontent.com/Y4kNPD0EqQ4tv3wKiD3esoQcD4X4cqXGIMuyGdnOlcTplZSG0W6vBJ0bMI1x9yNrsEI")
