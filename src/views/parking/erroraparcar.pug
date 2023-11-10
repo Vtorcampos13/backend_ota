@@ -1,0 +1,6 @@
+extends ../layout
+
+block content 
+    h1 Ya estás aparcado
+    form(action="/parking/desaparcar" method="post")
+            button(name="desaparcar" class='bloque desaparcar' formaction='/parking/desaparcar') Desaparcar

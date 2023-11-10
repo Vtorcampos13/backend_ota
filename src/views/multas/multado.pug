@@ -1,0 +1,6 @@
+extends ../layout
+
+block content 
+    h1 Tienes una multa
+    form(action="/multas/pagarmulta" method="post")
+        input(type="submit" value="Pagar Multa" name="Pagar multa")

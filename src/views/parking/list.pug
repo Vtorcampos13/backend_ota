@@ -1,0 +1,10 @@
+extends ../layout
+
+block content 
+    h1.parking-list-title Lista de parkings
+    if error 
+        h2 No se han podido encontrar los datos
+    else if parking
+        ul 
+            each parkings in parking
+                li.parking-list-item= parkings.fecha_inicio +', '+ parkings.fecha_fin +', '+ parkings.id_coche +', '+parkings.id_zona +', '+ parkings.activo

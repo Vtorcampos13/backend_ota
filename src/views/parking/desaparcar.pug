@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1 Desaparcar Coche
+  if error
+    p.error= error
+  form(action="/desaparcar", method="POST")
+    label(for="estacionamientoId") Estacionamiento ID:
+    input(type="text", name="estacionamientoId")
+    label(for="fechaFin") Fecha de Finalización:
+    input(type="datetime-local", name="fechaFin")
+    button(type="submit") Desaparcar Coche

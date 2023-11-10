@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    h1 Nuevo Parking
+    if error 
+        p(class="error", style="color:red;")= error 
+    form(action="/parking", method="post")
+        label(for="fecha_inicio") Fecha Inicio
+        input(type="datetime-local", name="fecha_inicio", id="fecha_inicio")
+        label(for="fecha_fin") Fecha Fin
+        input(type="datetime-local", name="fecha_fin", id="fecha_fin")
+        label(for="id_coche") Id coche
+        input(type="number", name="id_coche", id="id_coche")
+        label(for="id_zona") Id zona
+        input(type="number", name="id_zona", id="id_zona")
+        label(for="activo") Activo
+        input(type="number", name="activo", id="activo")
+        input(type="submit", value="Crear")

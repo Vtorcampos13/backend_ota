@@ -1,0 +1,13 @@
+extends ../layoutAdmin
+
+block content
+    if error 
+        p(class="error", style="color:red;")= error 
+    form(action="/coches", method="post")
+        label(for="marca") Marca
+        input(type="text", name="marca", id="marca")
+        label(for="modelo") Modelo
+        input(type="text", name="modelo", id="modelo")
+        label(for="matricula") Matricula
+        input(type="text", name="matricula", id="matricula")
+        input(type="submit", value="Crear")

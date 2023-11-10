@@ -1,0 +1,10 @@
+extends ../layoutAdmin
+
+block content 
+    h1.zona-list-title Lista de zonas
+    if error 
+        h2 No se han podido encontrar los datos
+    else if zona
+        ul 
+            each zonas in zona
+                li.zona-list-item= zonas.nombre_zona +', '+ zonas.tarifa_hora 

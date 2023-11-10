@@ -1,0 +1,25 @@
+extends ../layout
+
+block content 
+    h1.historico-list-title Histórico 
+    if error 
+        h2 No se ha podido recuperar el historial
+    else if datos 
+        ul 
+                table 
+                    thead 
+                        th Matricula:
+                        th Marca:
+                        th Modelo:
+                        th Zona:
+                        th Fecha inicio: 
+                        th Fecha fin:
+                    tbody
+                        each dato in datos 
+                            tr
+                                td= dato.coches.matricula
+                                td= dato.coches.marca
+                                td= dato.coches.modelo
+                                td= dato.zona.nombre_zona
+                                td= dato.fecha_inicio 
+                                td= dato.fecha_fin

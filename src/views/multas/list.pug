@@ -1,0 +1,10 @@
+extends ../layoutAdmin
+
+block content 
+    h1.multas-list-title Lista de multas
+    if error 
+        h2 No se han podido encontrar los datos
+    else if multas
+        ul 
+            each multa in multas
+                li.multas-list-item= multa.importe_multa +', '+ multa.fecha_multa +', '+ multa.id_parking +', '+multa.activa 

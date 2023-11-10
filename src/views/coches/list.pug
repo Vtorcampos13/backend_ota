@@ -1,0 +1,11 @@
+extends ../layoutAdmin
+
+block content 
+    h1.coche-list-title Lista de coches 
+    if error 
+        h2 No se han podido encontrar los datos
+    else if coches 
+        ul 
+            each coche in coches 
+                li.coche-list-item= coche.id_coche+', '+ coche.marca +', '+ coche.modelo +', '+ coche.matricula
+

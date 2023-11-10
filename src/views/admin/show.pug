@@ -1,0 +1,13 @@
+extends ../layoutAdmin
+
+block content 
+    if error 
+        p(class="error", style="color:red;")= error
+    if coche 
+        article 
+            h1="marca: "+coche.marca
+            p="modelo: "+coche.modelo
+            button 
+                a(href='/coches/'+coche.id_coche+'/edit') Editar
+            button
+                a(href='/coches/'+coche.id_coche+'/delete') Eliminar
